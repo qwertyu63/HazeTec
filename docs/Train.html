@@ -200,10 +200,10 @@ As he said, you spot a large clinic nearby. Walking inside, they hand you a pamp
 (unless: $Coins is 0)[\
 (if:$Purge is 0)[(link:&quot;Purge Mortality:&quot;)[(set:$Purge to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 2&quot;)]](else:)[**Purge Mortality:**] Why should the story ever end? After this service, it doesn&#39;t have to. You will stop aging and never do so again.
 (if:$Cure is 0)[(link:&quot;Perfect Cure:&quot;)[(set:$Cure to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 2&quot;)]](else:)[**Perfect Cure:**] Just take this pill, and you will never suffer illness or poison again.
-(if:$Patch is 0)[(link:&quot;Rapid Patch:&quot;)[(set:$Patch to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 2&quot;)]](else:)[**Rapid Patch:**] After we&#39;re done with you, you&#39;ll recover from all injuries rapidly; cuts and bruises heal in seconds while more severe injures take a couble minutes.
+(if:$Patch is 0)[(link:&quot;Rapid Patch:&quot;)[(set:$Patch to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 2&quot;)]](else:)[**Rapid Patch:**] After we&#39;re done with you, you&#39;ll recover from all injuries rapidly; cuts and bruises heal in seconds while more severe injures take a couple minutes.
 ](else:)[**Purge Mortality**: Why should the story ever end? After this service, it doesn&#39;t have to. You will stop aging and never do so again.
 **Perfect Cure**: Just take this pill, and you will never suffer illness or poison again.
-**Rapid Patch**: After we&#39;re done with you, you&#39;ll recover from all injuries rapidly; cuts and bruises heal in seconds while more severe injures take a couble minutes.
+**Rapid Patch**: After we&#39;re done with you, you&#39;ll recover from all injuries rapidly; cuts and bruises heal in seconds while more severe injures take a couple minutes.
 ]\
 
 (if:$Partner is 0)[As you look over the pamplet, a strange, pink-haired person walks up to you. Their appearance is very androgynous. They start to talk in quiet whispers.
