@@ -85,6 +85,15 @@ Taking his advice, you find a jewelry shop and look around.
 **Anklet of Fortune:** With this Anklet, you will never need for money; every week, you will gain $500 (adjusted for inflation over time).
 ]\
 
+(if:$Gold is 0)[Looking down the counter, you see a giant gold bar. Strange. The man behind the counter notices you looking at it.
+
+&quot;I wouldn&#39;t look at that really. It&#39;s boring really; just a standard 400oz gold bar... Wait.&quot;
+
+&quot;You&#39;re just a visitor here; you&#39;re heading back down to Life soon. Well, I think this could be of use to you then. I can have a smuggler friend ship it with you when you go back. It will just appear next to you when you get there.&quot;
+
+&quot;It&#39;s a simple trade: 1 **Astral Coin** you can&#39;t take with you anyway for 27 pounds of gold. Have we got a deal? (unless: $Coins is 0)[(link:&quot;Yes.&quot;)[(set:$Gold to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 3&quot;)](else:)[You can&#39;t afford this.]
+]
+]\
 [[Next Stop-&gt;Card Hub]]</tw-passagedata><tw-passagedata pid="5" name="Stop 5" tags="" position="25,325" size="100,100">**Administration**
 
 (display:&quot;Data&quot;)\
@@ -155,11 +164,11 @@ Heading inside, you spot a class schedule. There are two lined up that you&#39;v
 (unless: $Coins is 0)[\
 (if:$Joy is 0)[(link:&quot;Joy in the Wind:&quot;)[(set:$Joy to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 7&quot;)](else:)[**Joy in the Wind:**] After drinking this, fortune bends in your favor. Purely events are 50% more likely to go in your favor (e.g. a coin flip has a 75% chance to land the way to want).
 ]\
-(if:$Dance is 0)[(link:&quot;Dance in the Sand:&quot;)[(set:$Dance to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 7&quot;)](else:)[**Dance in the Sand:**] After drinking this, time slides along at your whim. You can speed up or slow down your perception by up to 90%.
+(if:$Dance is 0)[(link:&quot;Dance in the Sand:&quot;)[(set:$Dance to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 7&quot;)](else:)[**Dance in the Sand:**] After drinking this, time slides along at your whim. You can speed up or slow down your perception by up to 100%, letting you fit more thinking time or fast foward through boring things.
 ]\
 ](else:)[\
 **Joy in the Wind:** After drinking this, fortune bends in your favor. Purely events are 50% more likely to go in your favor (e.g. a coin flip has a 75% chance to land the way to want).
-**Dance in the Sand:** After drinking this, time slides along at your whim. You can speed up or slow down your perception by up to 90%.
+**Dance in the Sand:** After drinking this, time slides along at your whim. You can speed up or slow down your perception by up to 100%, letting you fit more thinking time or fast foward through boring things.
 ]\
 
 [[Next Stop-&gt;Card Hub]]</tw-passagedata><tw-passagedata pid="9" name="Stop 4" tags="" position="400,75" size="100,100">**Desire Plaza**
@@ -201,12 +210,13 @@ As he said, you spot a large clinic nearby. Walking inside, they hand you a pamp
 
 &quot;You&#39;re not dead, are you? Don&#39;t answer, I can just tell. You&#39;re headed back to the Bridge to go home, right? I&#39;ve got an idea.&quot;
 
-&quot;I operate a dating agency of sorts. For 1 **Astral Coin**, I can arrange for one of my people to come back with you to Life as your Partner. I&#39;ll tie them to your soul now, so they head through with you. I can arrange for whatever appearance and personality you desire.&quot;
+&quot;I operate a dating agency of sorts. For 1 **Astral Coin**, I can arrange for one of my people to come back with you to Life as your Partner. I&#39;ll tie them to your soul now, so they head through with you. I can arrange for any normal human appearance and personality you desire.&quot;
 
 &quot;As astral creatures, they are totally immortal, so they&#39;ll remain down in Life until you die properly. They won&#39;t have to eat or anything like that and if they get hurt, they&#39;ll heal near instantly. Since they are tied to your soul, they will follow any direct order you give them; how much you use this power is up to you.&quot; They wink at you.
 
 &quot;So, are you interested?&quot; (unless: $Coins is 0)[(link:&quot;Yes.&quot;)[(set:$Partner to 1)(set:$Coins to it - 1)(go-to: &quot;Stop 2&quot;)](else:)[You can&#39;t afford this.]
-]]\
+]
+]\
 [[Next Stop-&gt;Card Hub]]</tw-passagedata><tw-passagedata pid="11" name="Final Stop" tags="" position="400,200" size="100,100">**The Rainbow Bridge**
 **$Coins Astral Coins Remaining**
 
@@ -215,7 +225,7 @@ As he said, you spot a large clinic nearby. Walking inside, they hand you a pamp
 &quot;Thanks for playing along with all of this. You&#39;ve saved my job, that&#39;s for sure. I&#39;m sure I&#39;ll see you again eventually, when you&#39;re supposed to be here.&quot;
 
 [[Take the Bridge-&gt;Ending]]</tw-passagedata><tw-passagedata pid="12" name="Data" tags="" position="525,75" size="100,100">**$Coins Astral Coins Remaining**
-(if:$Timer &lt;= 2)[**$Timer Stops Left**
+(if:$Timer &lt;= 2)[**Stops Left: $Timer**
 ]\
 (if:$Display is 0)[(if:$Timer is 7)[
 &quot;I should actually explain how the Afterlife works. That&#39;s the proper name, by the way; the gods named it the Afterlife. And before you ask, there&#39;s only the one; we don&#39;t actually care how people act in Life.&quot;
@@ -254,6 +264,7 @@ As he said, you spot a large clinic nearby. Walking inside, they hand you a pamp
 (set:$Ownership to 0)
 (set:$Protection to 0)
 (set:$Fortune to 0)
+(set:$Gold to 0)
 
 (set:$Armor to 0)
 (set:$Sweater to 0)
@@ -274,48 +285,28 @@ As he said, you spot a large clinic nearby. Walking inside, they hand you a pamp
 *The End*
 
 **Choices Overview:**
-(if:$Ambrosia is 1)[Ambrosia
-]\
-(if:$Quicksilver is 1)[Quicksilver
-]\
-(if:$Mousse is 1)[Aqua Mousse
-]\
-(if:$Purge is 1)[Purge Mortality
-]\
-(if:$Cure is 1)[Perfect Cure
-]\
-(if:$Patch is 1)[Rapid Patch
-]\
-(if:$Partner is 1)[Partner
-]\
-(if:$Ownership is 1)[Ring of Ownership
-]\
-(if:$Protection is 1)[Necklace of Protection
-]\
-(if:$Fortune is 1)[Anklet of Fortune
-]\
-(if:$Armor is 1)[Armor Jacket
-]\
-(if:$Sweater is 1)[Sweater of Balance
-]\
-(if:$Perfection is 1)[Perfection
-]\
-(if:$Inversion is 1)[Inversion
-]\
-(if:$Rebuild is 1)[Rebuild
-]\
-(if:$Fortress is 1)[Mental Fortress
-]\
-(if:$Blade is 1)[Mental Blade
-]\
-(if:$Joy is 1)[Joy in the Wind
-]\
-(if:$Dance is 1)[Dance in the Sand
-]\
-(if:$Control is 1)[Red Star Control
-]\
-(if:$Senses is 1)[Blue Star Senses
-]</tw-passagedata></tw-storydata>
+(if:$Ambrosia is 1)[Ambrosia: You don&#39;t need to eat or drink.]\
+(if:$Quicksilver is 1)[Quicksilver: You don&#39;t need to sleep and have infinite stamina.]\
+(if:$Mousse is 1)[Aqua Mousse: You don&#39;t need to breathe and are immune to pressure.]\
+(if:$Purge is 1)[Purge Mortality: You don&#39;t age anymore.]\
+(if:$Cure is 1)[Perfect Cure: You are immune to all diseases and poisons.]\
+(if:$Patch is 1)[Rapid Patch: You quickly heal all injuries taken.]\
+(if:$Partner is 1)[Partner: You have an astral partner with you.]\
+(if:$Ownership is 1)[Ring of Ownership: Things you are carrying can not be stolen.]\
+(if:$Protection is 1)[Necklace of Protection: Things you are carrying can not be destroyed.]\
+(if:$Fortune is 1)[Anklet of Fortune: You will get $500 per week.]\
+(if:$Gold is 1)[Gold Bar: You have a gold bar weighing roughly 27 pounds.]\
+(if:$Armor is 1)[Armor Jacket: You are resistant to all forms of physical injury.]\
+(if:$Sweater is 1)[Sweater of Balance: You are immune to heat, cold and fire.]\
+(if:$Perfection is 1)[Perfection: Your strength, speed and dexterity are enhanced.]\
+(if:$Inversion is 1)[Inversion: Your physical sex is set as you requested.]\
+(if:$Rebuild is 1)[Rebuild: Your appearance is changed as you requested.]\
+(if:$Fortress is 1)[Mental Fortress: You have a perfect memory and are immune to fear and stress.]\
+(if:$Blade is 1)[Mental Blade: You can read minds by eye contact and touch.]\
+(if:$Joy is 1)[Joy in the Wind: You are lucky.]\
+(if:$Dance is 1)[Dance in the Sand: You can speed up or slow down your mind.]\
+(if:$Control is 1)[Red Star Control: You control your waste products and can be selectively infertile.]\
+(if:$Senses is 1)[Blue Star Senses: Your sight and hearing are enhanced; you can also see ultraviolet and infrared light.]</tw-passagedata><tw-passagedata pid="15" name="Event" tags="" position="650,25" size="100,100">Double-click this passage to edit it.</tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
